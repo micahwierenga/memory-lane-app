@@ -1,0 +1,23 @@
+<% include ./partials/header.ejs %>
+
+<% if (message) { %>
+	<div class='alert alert-danger col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1'><%= message %></div>
+<% } %>
+
+<h2 class='col-md-4 col-md-offset-4'>Login</h2>
+
+<form method='post' action='/login'>
+	<div class='form-group col-md-4 col-md-offset-4'>
+		<input class='form-control' type='text' name='email' id='email'>
+	</div>
+
+	<div class='form-group col-md-4 col-md-offset-4'>
+		<input class='form-control' type='password' name='password' id='password'>
+	</div>
+
+	<div class='form-group col-md-4 col-md-offset-4'>
+		<input class='btn btn-default' type='submit'>
+	</div>
+</form>
+
+<% include ./partials/footer.ejs %>

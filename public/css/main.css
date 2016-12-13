@@ -1,0 +1,20 @@
+body {
+/*	padding-top: 70px;*/
+	background: #d7cec7;
+	color: #c09f80;
+
+}
+
+.navbar {
+	background-color: #88888f;
+	border: none;
+	border-radius: 0;
+	font-weight: bold;
+}
+
+#mapFrame {
+	margin: 0;
+}
+
+.form-control {
+}
