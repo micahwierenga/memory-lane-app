@@ -2,7 +2,7 @@ var passport = require('passport');
 var bodyParser = require('body-parser');
 var passport = require('passport');
 
-var apiKeyGoogle = require('../config/env');
+var apiKeyGoogle = process.env.apiKeyGoogle || require('../config/env').key;
 
 
 var db = require('../models');
@@ -160,16 +160,15 @@ function story_delete(req, res) {
 
 function get_map(req, res) {
 	res.json('https://maps.googleapis.com/maps/api/js?key=' + apiKeyGoogle.key + '&libraries=places&callback=initAutocomplete')
-	// res.json('https://www.google.com/maps/embed/v1/place?key=' + apiKeyGoogle.key + '&q=Platte+St,+Denver,+CO+80202');
 }
 
-function search_map(req, res) {
-	var street = req.body;
-	var cityZip = req.query.cityZip;
-	console.log(street);
-	console.log(cityZip);
-	res.json('https://www.google.com/maps/embed/v1/place?key=' + apiKeyGoogle.key + '&q=' + street + ',' + cityZip);
-}
+// function search_map(req, res) {
+// 	var street = req.body;
+// 	var cityZip = req.query.cityZip;
+// 	console.log(street);
+// 	console.log(cityZip);
+// 	res.json('https://www.google.com/maps/embed/v1/place?key=' + apiKeyGoogle.key + '&q=' + street + ',' + cityZip);
+// }
 
 function test(req, res) {
 	res.render('test.ejs', { message: req.flash('loginMessage') });
