@@ -1,11 +1,13 @@
 console.log("connected?");
 
 $(document).ready(function() {
-	// var map = '';
-	// $.get('/api/map', function(data) {
-	// 	map = data;
-	// 	$('#googleMaps').attr('src', map);
-	// })
+	var map = '';
+	$.get('/api/map', function(data) {
+		map = data;
+		$('#mapScript').attr('src', map);
+	});
+
+	
 
 	$('#storyModal form').submit(function(event) {
 		event.preventDefault();
@@ -23,11 +25,12 @@ $(document).ready(function() {
 });
 
 function displayStory(data) {
-	var displayStory = $('<div></div>').attr('id', 'displayStory');
-	var street = $('<div></div>').text('<strong>Street:</strong> ' + data.street);
-	var date = $('<div></div>').text('<strong>From:</strong> ' + data.monthStart + ' ' + data.yearStart + ' to ' + data.monthEnd + ' ' + data.yearEnd);
-	var story = $('<div></div>').text('<strong>Story:</strong> ' + data.storyBody);
-	$(displayStory).append(street, date, story);
+	var displayStory = $('<div></div>').attr('id', 'displayStory', 'class', 'row');
+	var header = $('<div></div>').html('<span class="glyphicon glyphicon-pencil"></span><span class="glyphicon glyphicon-remove"></span>');
+	var street = $('<div></div>').html('<strong>Street:</strong> ' + data.street);
+	var date = $('<div></div>').html('<strong>From:</strong> ' + data.monthStart + ' ' + data.yearStart + ' to ' + data.monthEnd + ' ' + data.yearEnd);
+	var story = $('<div></div>').html('<strong>Story:</strong> ' + data.storyBody);
+	$(displayStory).append(header, street, date, story);
 	$('#storyModal').prepend(displayStory);
 }
 
@@ -61,6 +64,13 @@ function initAutocomplete() {
 	  streetField.value = searchStreet;
 	  var cityField = document.getElementById("city");
 	  cityField.value = searchCity;
+	  $.get('/api/story', function(stories) {
+	  	stories.forEach(function(stories) {
+	  		if (stories.street == searchStreet) {
+	  			displayStory(stories);
+	  		}
+		})
+	  });
 
 	  
 

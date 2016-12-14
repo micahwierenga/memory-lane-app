@@ -86,27 +86,27 @@ function user_create(req, res) {
 };
 
 function user_show(req, res) {
-	db.User.findOne(req.params.id, function(err, user) {
+	db.User.findById(req.params.id, function(err, user) {
 		if (err) return "user show error: " + err;
-		if (req.params.id == user.local._id) {
-			res.json(user);
-		}
+		res.json(user);
 	})
 };
 
 function user_update(req, res) {
-	db.User.find(req.params.id, function(err, user) {
+	db.User.findById(req.params.id, function(err, user) {
 		if (err) return "user update error: " + err;
-		if (req.params.id == user.local._id) {
-			req.body.email = user.local.email;
-			req.body.password = user.local.password;
-			req.body.username = user.local.username;
+		if (req.params.id == user._id) {
+			user.local.email = req.body.email;
+			user.local.password = req.body.password;
+			user.local.username = req.body.username;
+			user.save();
 		}
+		res.json(user);
 	})
 };
 
 function user_delete(req, res) {
-	db.User.remove(req.params.id, function(err, user) {
+	db.User.remove({'_id' : req.params.id}, function(err, user) {
 		if (err) return "user delete error: " + err;
 		res.json(user);
 	})
@@ -120,12 +120,6 @@ function story_index(req, res) {
 };
 
 function story_create(req, res) {
-	// var storyStrategy = passport.authenticate('local-story', {
-	// 	successRedirect: '/',
-	// 	failureRedirect: '/',
-	// 	failureFlash: true
-	// });
-	// return storyStrategy(req, res);
 	db.Story.create(req.body, function(err, story) {
 		if (err) return "story create error: " + err;
 		res.json(story);
@@ -134,36 +128,39 @@ function story_create(req, res) {
 };
 
 function story_show(req, res) {
-	db.Story.findOne(req.params.id, function(err, story) {
+	db.Story.findById(req.params.id, function(err, story) {
 		if (err) return "story show error: " + err;
-		if (req.params.id == story._id) {
-			res.json(story);
-		}
+		res.json(story);
 	})
 };
 
 function story_update(req, res) {
-	db.Story.find(req.params.id, function(err, story) {
+	db.Story.findById(req.params.id, function(err, story) {
 		if (err) return "story update error: " + err;
 		if (req.params.id == story._id) {
-			req.body.monthStart = story.monthStart;
-			req.body.monthEnd = story.monthEnd;
-			req.body.yearStart = story.yearStart;
-			req.body.yearEnd = story.yearEnd;
-			req.body.storyBody = story.storyBody;
+			story.street = req.body.street;
+			story.city = req.body.city;
+			story.monthStart = req.body.monthStart;
+			story.yearStart = req.body.yearStart;
+			story.monthEnd = req.body.monthEnd;
+			story.yearEnd = req.body.yearEnd;
+			story.storyBody = req.body.storyBody;
+			story.save();
 		}
+		res.json(story);
 	})
 };
 
 function story_delete(req, res) {
-	db.Story.remove(req.params.id, function(err, story) {
+	db.Story.remove({'_id' : req.params.id}, function(err, story) {
 		if (err) return "story delete error: " + err;
 		res.json(story);
 	})
 };
 
 function get_map(req, res) {
-	res.json('https://www.google.com/maps/embed/v1/place?key=' + apiKeyGoogle.key + '&q=Platte+St,+Denver,+CO+80202');
+	res.json('https://maps.googleapis.com/maps/api/js?key=' + apiKeyGoogle.key + '&libraries=places&callback=initAutocomplete')
+	// res.json('https://www.google.com/maps/embed/v1/place?key=' + apiKeyGoogle.key + '&q=Platte+St,+Denver,+CO+80202');
 }
 
 function search_map(req, res) {

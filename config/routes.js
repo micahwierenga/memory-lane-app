@@ -48,8 +48,10 @@ router.route('/api/story')
 
 router.route('/api/story/:id')
 	.get(usersController.story_show)
-	.put(authenticatedUser, usersController.story_update)
-	.delete(authenticatedUser, usersController.story_delete)
+	.put(usersController.story_update)
+	// .put(authenticatedUser, usersController.story_update)
+	.delete(usersController.story_delete)
+	// .delete(authenticatedUser, usersController.story_delete)
 
 router.route('/api/map')
 	.get(usersController.get_map)

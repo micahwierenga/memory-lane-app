@@ -1,23 +1,22 @@
 body {
 /*	padding-top: 70px;*/
-	background: black;
-
+	background: #18121E;
 }
 
 .navbar {
-	background-color: white;
+	background-color: #EAC67A;
 	border: none;
 	border-radius: 0;
 	font-weight: bold;
 }
 
-.navbar-brand {
-	color: black;
+.navbar-default {
+	color: #18121E;
 }
 
-.navbar-brand:hover {
+/*.navbar-brand:hover {
 	color: black;
-}
+}*/
 
 #mapFrame {
 	margin: 0;
@@ -28,75 +27,116 @@ body {
 }
 
 #storyModal {
-	background: gray;
-	padding: 20px;
+	background: #233237;
+	padding: 15px;
+	border-radius: 4px;
+	color: #EAC67A;
 }
 
 #displayStory {
-	background: white;
-	color: black;
+	background: #984b43;
+	color: white;
 	padding: 10px;
 	margin-bottom: 20px;
 	border-radius: 4px;
+	width: 100%;
+	display: inline-block;
 }
 
 .form-control {
 	border-radius: none;
+	width: inherit;
+	display: inline-block;
 }
+
+label {
+	width: 92%;
+	margin-left: 14px;
+}
+
+#street {
+	width: 46%;
+	margin-left: 14px;
+}
+
+#city {
+	width: 46%;
+}
+
+#monthStart {
+	width: 46%;
+	margin-left: 14px;}
+
+#yearStart {
+	width: 46%;
+}
+
+#monthEnd {
+	width: 46%;
+	margin-left: 14px;}
+
+#yearEnd {
+	width: 46%;
+}
+
+#storyBody {
+	width: 92%;
+	margin-left: 14px;}
 
 
 
 #map {
-width: 600px;
-height: 400px;
+	width: 600px;
+	height: 500px;
+	border-radius: 4px;
 }
 /* Optional: Makes the sample page fill the window. */
 html, body {
-height: 100%;
-margin: 0;
-padding: 0;
+	height: 100%;
+	margin: 0;
+	padding: 0;
 }
 .controls {
-margin-top: 10px;
-border: 1px solid transparent;
-border-radius: 2px 0 0 2px;
-box-sizing: border-box;
--moz-box-sizing: border-box;
-height: 32px;
-outline: none;
-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+	margin-top: 10px;
+	border: 1px solid transparent;
+	border-radius: 2px 0 0 2px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	height: 32px;
+	outline: none;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
 #pac-input {
-background-color: #fff;
-font-family: Roboto;
-font-size: 15px;
-font-weight: 300;
-margin-left: 12px;
-padding: 0 11px 0 13px;
-text-overflow: ellipsis;
-width: 300px;
+	background-color: #fff;
+	font-family: Roboto;
+	font-size: 15px;
+	font-weight: 300;
+	margin-left: 12px;
+	padding: 0 11px 0 13px;
+	text-overflow: ellipsis;
+	width: 300px;
 }
 
 #pac-input:focus {
-border-color: #4d90fe;
+	border-color: #18121E;
 }
 
 .pac-container {
-font-family: Roboto;
+	font-family: Roboto;
 }
 
 #type-selector {
-color: #fff;
-background-color: #4d90fe;
-padding: 5px 11px 0px 11px;
+	color: #fff;
+	background-color: #4d90fe;
+	padding: 5px 11px 0px 11px;
 }
 
 #type-selector label {
-font-family: Roboto;
-font-size: 13px;
-font-weight: 300;
+	font-family: Roboto;
+	font-size: 13px;
+	font-weight: 300;
 }
 #target {
-width: 345px;
+	width: 345px;
 }
