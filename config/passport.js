@@ -51,20 +51,17 @@ module.exports = function(passport) {
 		});
 	}));
 
-	// passport.use('local-secret', new LocalStrategy({
-	// 	usernameField: 'email',
-	// 	passwordField: 'password',
-	// 	passReqToCallback: true
-	// }, function(req, email, password, callback) {
-	// 	User.findOne({ 'local.email': email }, function(err, user) {
-	// 		if (err) return callback(err);
-	// 		if (!user) {
-	// 			return callback(null, false, req.flash('secretMessage', 'We do not recognize your email'))
-	// 		}
-	// 		if (!user.validPassword(password)) {
-	// 			return callback(null, false, req.flash('secretMessage', 'We do not recognize your password'))
-	// 		}
-	// 		return callback(null, user);
-	// 	});
-	// }));
+	passport.use('local-story', new LocalStrategy({
+		usernameField: 'email',
+		passwordField: 'password',
+		passReqToCallback: true
+	}, function(req, email, password, callback) {
+		User.findOne({ 'local.email': email }, function(err, user) {
+			if (err) return callback(err);
+			if (!user) {
+				return callback(null, false, req.flash('storyMessage', 'You must sign up to submit a story'))
+			}
+			return callback(null, user);
+		});
+	}));
 }

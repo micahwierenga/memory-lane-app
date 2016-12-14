@@ -41,8 +41,9 @@ router.route('/api/user/:id')
 	.put(usersController.user_update)
 	.delete(usersController.user_delete)
 
-router.route('/api/story')
+router.route('/story')
 	.get(usersController.story_index)
+	// .post(usersController.story_create)
 	.post(authenticatedUser, usersController.story_create)
 
 router.route('/api/story/:id')
@@ -56,6 +57,9 @@ router.route('/api/map')
 router.route('/api/searchMap')
 	.get(usersController.search_map)
 	.post(usersController.search_map)
+
+router.route('/test')
+	.get(usersController.test)
 
 
 // app.get('/api', api_index);

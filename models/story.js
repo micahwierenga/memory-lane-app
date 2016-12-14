@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var StorySchema = mongoose.Schema ({
 	street: String,
-	zip: Number,
+	city: String,
 	monthStart: String,
 	monthEnd: String,
 	yearStart: Number,

@@ -60,7 +60,8 @@ function getLogout(req, res) {
 };
 
 function secret(req, res) {
-	res.send( {secretMessage: "Hey" });
+	res.render('secret.ejs', { secretMessage: "Hey" });
+	// res.send( {secretMessage: "Hey" });
 
 	// var secretStrategy = passport.authenticate('local-secret', {
 	// 	successRedirect: '/secret',
@@ -119,10 +120,17 @@ function story_index(req, res) {
 };
 
 function story_create(req, res) {
+	var storyStrategy = passport.authenticate('local-story', {
+		successRedirect: '/',
+		failureRedirect: '/',
+		failureFlash: true
+	});
+	return storyStrategy(req, res);
 	db.Story.create(req.body, function(err, story) {
 		if (err) return "story create error: " + err;
 		res.json(story);
 	});
+
 };
 
 function story_show(req, res) {
@@ -166,6 +174,10 @@ function search_map(req, res) {
 	res.json('https://www.google.com/maps/embed/v1/place?key=' + apiKeyGoogle.key + '&q=' + street + ',' + cityZip);
 }
 
+function test(req, res) {
+	res.render('test.ejs', { message: req.flash('loginMessage') });
+};
+
 module.exports = {
 	getLogin: getLogin,
 	postLogin: postLogin,
@@ -185,5 +197,6 @@ module.exports = {
 	story_update: story_update,
 	story_delete: story_delete,
 	get_map: get_map,
-	search_map: search_map
+	search_map: search_map,
+	test: test
 }
