@@ -37,7 +37,7 @@ var routes = require('./config/routes');
 app.use(routes);
 
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
 
 // app.get('/', function homepage(req, res) {
 // 	res.sendFile(__dirname + '/views/index.html');
