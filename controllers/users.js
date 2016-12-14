@@ -1,6 +1,6 @@
 var passport = require('passport');
 var bodyParser = require('body-parser');
-var passport = require('passport');
+// var passport = require('passport');
 
 var apiKeyGoogle = process.env.apiKeyGoogle || require('../config/env').key;
 
@@ -193,6 +193,6 @@ module.exports = {
 	story_update: story_update,
 	story_delete: story_delete,
 	get_map: get_map,
-	search_map: search_map,
+	// search_map: search_map,
 	test: test
 }
