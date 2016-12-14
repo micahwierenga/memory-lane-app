@@ -8,7 +8,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 
-mongoose.connect('mongodb://localhost/memory-lane-app');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/memory-lane-app');
 
 app.use(morgan('dev'));
 app.use(cookieParser());
