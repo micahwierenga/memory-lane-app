@@ -2,6 +2,10 @@
 
 //I used to love to walk to McGucken Park.
 
+//This is where my son learned to ride a scooter.
+
+//Our house was uprooted and moved to make room for Challenger Middle School, but I remember playing in the apartment complex across the street.
+
 // This example uses the autocomplete feature of the Google Places API.
       // It allows the user to find all hotels in a given place, within a given
       // country. It then displays markers for all the hotels returned,

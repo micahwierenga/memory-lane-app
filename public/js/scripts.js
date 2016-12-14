@@ -1,24 +1,35 @@
 console.log("connected?");
 
 $(document).ready(function() {
-	var map = '';
-	$.get('/api/map', function(data) {
-		map = data;
-		$('#googleMaps').attr('src', map);
-	})
+	// var map = '';
+	// $.get('/api/map', function(data) {
+	// 	map = data;
+	// 	$('#googleMaps').attr('src', map);
+	// })
 
-	// $('.row form').submit(function(event) {
-	// event.preventDefault();
-	// var data = $(this).serialize();
-	// $.post('api/searchMap', function(data) {
-	// 	console.log(data);
-	// }).done(function(res) {
-	// 	console.log(res);
-	// 	console.log(data.street);
-	// 	$('#googleMaps').attr('src', res + data);
-	// })
-	// })
+	$('#storyModal form').submit(function(event) {
+		event.preventDefault();
+		var $street = $('#street').val();
+		var $city = $('#city').val();
+		var $monthStart = $('#monthStart').val();
+		var $yearStart = $('#yearStart').val();
+		var $monthEnd = $('#monthEnd').val();
+		var $yearEnd = $('#yearEnd').val();
+		var $storyBody = $('#storyBody').val();
+		$.post('/api/story', {street: $street, city: $city, monthStart: $monthStart, yearStart: $yearStart, monthEnd: $monthEnd, yearEnd: $yearEnd, storyBody: $storyBody}, function(data) {
+			displayStory(data);
+		})	
+	})
 });
+
+function displayStory(data) {
+	var displayStory = $('<div></div>').attr('id', 'displayStory');
+	var street = $('<div></div>').text('<strong>Street:</strong> ' + data.street);
+	var date = $('<div></div>').text('<strong>From:</strong> ' + data.monthStart + ' ' + data.yearStart + ' to ' + data.monthEnd + ' ' + data.yearEnd);
+	var story = $('<div></div>').text('<strong>Story:</strong> ' + data.storyBody);
+	$(displayStory).append(street, date, story);
+	$('#storyModal').prepend(displayStory);
+}
 
 
 function initAutocomplete() {

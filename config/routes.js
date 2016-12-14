@@ -41,10 +41,10 @@ router.route('/api/user/:id')
 	.put(usersController.user_update)
 	.delete(usersController.user_delete)
 
-router.route('/story')
+router.route('/api/story')
 	.get(usersController.story_index)
-	// .post(usersController.story_create)
-	.post(authenticatedUser, usersController.story_create)
+	.post(usersController.story_create)
+	// .post(authenticatedUser, usersController.story_create)
 
 router.route('/api/story/:id')
 	.get(usersController.story_show)

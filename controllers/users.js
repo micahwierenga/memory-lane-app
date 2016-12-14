@@ -120,12 +120,12 @@ function story_index(req, res) {
 };
 
 function story_create(req, res) {
-	var storyStrategy = passport.authenticate('local-story', {
-		successRedirect: '/',
-		failureRedirect: '/',
-		failureFlash: true
-	});
-	return storyStrategy(req, res);
+	// var storyStrategy = passport.authenticate('local-story', {
+	// 	successRedirect: '/',
+	// 	failureRedirect: '/',
+	// 	failureFlash: true
+	// });
+	// return storyStrategy(req, res);
 	db.Story.create(req.body, function(err, story) {
 		if (err) return "story create error: " + err;
 		res.json(story);
