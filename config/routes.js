@@ -56,9 +56,9 @@ router.route('/api/story/:id')
 router.route('/api/map')
 	.get(usersController.get_map)
 
-router.route('/api/searchMap')
-	.get(usersController.search_map)
-	.post(usersController.search_map)
+// router.route('/api/searchMap')
+// 	.get(usersController.search_map)
+// 	.post(usersController.search_map)
 
 router.route('/test')
 	.get(usersController.test)
