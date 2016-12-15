@@ -1,23 +1,26 @@
 <% include ./partials/header.ejs %>
 
-<% if (message) { %>
-	<div class='alert alert-danger'><%= message %></div>
-<% } %>
+<!-- <% if (message) { %>
+	<div class='alert alert-danger signup'><%= message %></div>
+<% } %> -->
 
 <form method='post' action='/signup'>
-	<div class='form-group'>
-		<input class='form-control' type='text' placeholder='Email' name='email' id='email'>
+	<div class='form-group col-md-4 col-md-offset-4'>
+		<input class='form-control signup' type='text' placeholder='Email' name='email' id='email'>
 	</div>
 
-	<div class='form-group'>
-		<input class='form-control' type='password' placeholder='Password' name='password' id='password'>
+	<div class='form-group col-md-4 col-md-offset-4'>
+		<input class='form-control signup' type='password' placeholder='Password' name='password' id='password'>
 	</div>
 
-	<div class='form-group'>
-		<input class='form-control' type='text' placeholder='Username' name='username' id='username'>
+	<div class='form-group col-md-4 col-md-offset-4'>
+		<input class='form-control signup' type='text' placeholder='Username' name='user_name' id='user_name'>
 	</div>
 
-	<input class='btn btn-deafult' type='submit'>
+	<div class='form-group col-md-4 col-md-offset-4'>
+		<input class='btn btn-deafult' type='submit'>
+	</div>
+
 </form>
 
 <% include ./partials/footer.ejs %>

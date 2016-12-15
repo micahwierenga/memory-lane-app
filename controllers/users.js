@@ -122,16 +122,15 @@ function story_index(req, res) {
 };
 
 function story_create(req, res) {
-	// var story = req.body;
-	// db.User.findById(req.params.id, function(err, user) {
-	// 	user.local.stories.push(req.body);
-	// })
-
-	db.Story.create(req.body, function(err, story) {
+	var user = req.user._id;
+	db.User.findById(user, function(err, user) {
+		db.Story.create(req.body, function(err, story) {
 		if (err) return "story create error: " + err;
+		user.stories.push(story);
+		user.save();
 		res.json(story);
+		})	
 	});
-
 };
 
 function story_show(req, res) {

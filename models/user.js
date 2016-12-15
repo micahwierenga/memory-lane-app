@@ -6,11 +6,11 @@ var Story = require('./story.js');
 
 var User = new Schema ({
 	local: {
-		email: String,
-		username: String,
-		password: String,
-		stories: [Story.schema]
-	}
+		email: String,		
+		password: String
+	},
+	user_name: String,
+	stories: [Story.schema]
 });
 
 User.methods.encrypt = function(password) {
