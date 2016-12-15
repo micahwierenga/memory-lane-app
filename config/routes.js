@@ -56,34 +56,7 @@ router.route('/api/story/:id')
 router.route('/api/map')
 	.get(usersController.get_map)
 
-// router.route('/api/searchMap')
-// 	.get(usersController.search_map)
-// 	.post(usersController.search_map)
-
 router.route('/test')
 	.get(usersController.test)
-
-
-// app.get('/api', api_index);
-
-// app.get('/api/user', user_index);
-
-// app.post('api/user', user_create);
-
-// app.get('api/user/:id', user_show);
-
-// app.put('api/user/:id', user_update);
-
-// app.delete('api/user/:id', user_delete);
-
-// app.get('/api/story', story_index);
-
-// app.post('api/story', story_create);
-
-// app.get('api/story/:id', story_show);
-
-// app.put('api/story/:id', story_update);
-
-// app.delete('api/story/:id', story_delete);
 
 module.exports = router;

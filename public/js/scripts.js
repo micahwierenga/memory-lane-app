@@ -7,8 +7,6 @@ $(document).ready(function() {
 		$('#mapScript').attr('src', map);
 	});
 
-	
-
 	$('#storyModal form').submit(function(event) {
 		event.preventDefault();
 		var $street = $('#street').val();
@@ -20,19 +18,91 @@ $(document).ready(function() {
 		var $storyBody = $('#storyBody').val();
 		$.post('/api/story', {street: $street, city: $city, monthStart: $monthStart, yearStart: $yearStart, monthEnd: $monthEnd, yearEnd: $yearEnd, storyBody: $storyBody}, function(data) {
 			displayStory(data);
-		})	
+		})
 	})
 });
 
 function displayStory(data) {
 	var displayStory = $('<div></div>').attr('id', 'displayStory', 'class', 'row');
-	var header = $('<div></div>').html('<span class="glyphicon glyphicon-pencil"></span><span class="glyphicon glyphicon-remove"></span>');
+	var header = $('<div></div>').html('<span id="glyphicon-pencil" class="glyphicon glyphicon-pencil"></span><span id="glyphicon-remove" class="glyphicon glyphicon-remove"></span>');
+	header.attr('id', 'header');
 	var street = $('<div></div>').html('<strong>Street:</strong> ' + data.street);
 	var date = $('<div></div>').html('<strong>From:</strong> ' + data.monthStart + ' ' + data.yearStart + ' to ' + data.monthEnd + ' ' + data.yearEnd);
 	var story = $('<div></div>').html('<strong>Story:</strong> ' + data.storyBody);
 	$(displayStory).append(header, street, date, story);
 	$('#storyModal').prepend(displayStory);
+	$('#glyphicon-remove').click(function(event) {
+		event.preventDefault();
+		$.ajax({
+			type: 'DELETE',
+			url: '/api/story/' + data._id
+		});
+		$(displayStory).remove();
+	})
+	$('#glyphicon-pencil').click(function(event) {
+		console.log('clicked pencil')
+		event.preventDefault();
+		var updateStory = 
+		    "<form id='updateStoryForm' method='post' action='/story' name='updateStoryBody'>" +
+		      "<div class='form-group row'>" +
+		        "<input class='form-control' type='text' placeholder='Street' value='" + data.street + "' name='updateStreet' id='street'>" +
+		        "<input class='form-control' type='text' placeholder='City' value='" + data.city + "' name='updateCity' id='city'>" +
+		      "</div>" +
+
+		      "<div class='form-group row'>" +
+		        "<label  class=''>From</label>" +
+		        "<input class='form-control' type='text' placeholder='Month' value='" + data.monthStart + "' name='monthStart' id='monthStart'>" +
+		        "<input class='form-control' type='text' placeholder='Year' value='" + data.yearStart + "' name='yearStart' id='yearStart'>" +
+		        
+		      "</div>" +
+
+		      "<div class='form-group row'>" +
+		        "<label class=''>To</label>" +
+		        "<input class='form-control' type='text' placeholder='Month' value='" + data.monthEnd + "' name='monthEnd' id='monthEnd'>" +
+		        "<input class='form-control' type='text' placeholder='Year' value='" + data.yearEnd + "' name='yearEnd' id='yearEnd'>" +
+		      "</div>" +
+
+		      "<div class='form-group row'>" +
+		        "<textarea class='form-control' name='storyBody' value='Your Story' id='storyBody'>" + data.storyBody + "</textarea>" +
+		      "</div>" +
+
+		      "<div class='form-group'>" +
+		        "<input class='btn btn-default' value='Update' type='submit'>" +
+		      "</div>" +
+		    "</form>";
+
+		$(displayStory).html("");
+		$(displayStory).prepend(updateStory);
+		$('#storyModal form').trigger('reset');
+		$('#updateStoryForm').submit(function(event) {
+			event.preventDefault();
+			var $streetUpdate = $('#street').val();
+			var $cityUpdate = $('#city').val();
+			var $monthStartUpdate = $('#monthStart').val();
+			var $yearStartUpdate = $('#yearStart').val();
+			var $monthEndUpdate = $('#monthEnd').val();
+			var $yearEndUpdate = $('#yearEnd').val();
+			var $storyBodyUpdate = $('#storyBody').val();
+			$.ajax({
+				type: 'PUT',
+				url: '/api/story/' + data._id,
+				data: {street: $streetUpdate, city: $cityUpdate, monthStart: $monthStartUpdate, yearStart: $yearStartUpdate, monthEnd: $monthEndUpdate, yearEnd: $yearEndUpdate, storyBody: $storyBodyUpdate},
+				success: function(data) {
+					$(displayStory).html("");
+					var header = $('<div></div>').html('<span id="glyphicon-pencil" class="glyphicon glyphicon-pencil"></span><span id="glyphicon-remove" class="glyphicon glyphicon-remove"></span>');
+					header.attr('id', 'header');
+					var street = $('<div></div>').html('<strong>Street:</strong> ' + data.street);
+					var date = $('<div></div>').html('<strong>From:</strong> ' + data.monthStart + ' ' + data.yearStart + ' to ' + data.monthEnd + ' ' + data.yearEnd);
+					var story = $('<div></div>').html('<strong>Story:</strong> ' + data.storyBody);
+					$(displayStory).append(header, street, date, story);
+				}
+			});
+		})
+	})
 }
+
+
+
 
 
 function initAutocomplete() {

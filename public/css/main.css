@@ -81,7 +81,22 @@ label {
 
 #storyBody {
 	width: 92%;
-	margin-left: 14px;}
+	margin-left: 14px;
+}
+
+#header {
+	text-align: right;
+	height: 20px;
+}
+
+.glyphicon {
+	margin-right: 5px;
+	color: white;
+}
+
+.glyphicon:hover {
+	color: #ddd;
+}
 
 
 
