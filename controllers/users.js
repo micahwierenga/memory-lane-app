@@ -1,8 +1,7 @@
 var passport = require('passport');
 var bodyParser = require('body-parser');
-// var passport = require('passport');
 
-var apiKeyGoogle = process.env.apiKeyGoogle || require('../config/env');
+var apiKeyGoogle = process.env.apiKeyGoogle || require('../config/env').key;
 
 
 var db = require('../models');
@@ -159,7 +158,7 @@ function story_delete(req, res) {
 };
 
 function get_map(req, res) {
-	res.json('https://maps.googleapis.com/maps/api/js?key=' + apiKeyGoogle.key + '&libraries=places&callback=initAutocomplete')
+	res.json('https://maps.googleapis.com/maps/api/js?key=' + apiKeyGoogle + '&libraries=places&callback=initAutocomplete')
 }
 
 function test(req, res) {
