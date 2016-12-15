@@ -103,7 +103,7 @@ label {
 #map {
 	width: 600px;
 	height: 500px;
-	border-radius: 15px;
+	border-radius: 4px;
 }
 /* Optional: Makes the sample page fill the window. */
 html, body {
@@ -132,6 +132,7 @@ html, body {
 	padding: 0 11px 0 13px;
 	text-overflow: ellipsis;
 	width: 300px;
+	border-radius: 4px;
 }
 
 #pac-input:focus {
@@ -146,6 +147,7 @@ html, body {
 	color: #fff;
 	background-color: #4d90fe;
 	padding: 5px 11px 0px 11px;
+	border-radius: 4px;
 }
 
 #type-selector label {
