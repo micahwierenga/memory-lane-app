@@ -103,7 +103,7 @@ label {
 #map {
 	width: 600px;
 	height: 500px;
-	border-radius: 4px;
+	border-radius: 15px;
 }
 /* Optional: Makes the sample page fill the window. */
 html, body {
@@ -111,6 +111,7 @@ html, body {
 	margin: 0;
 	padding: 0;
 }
+
 .controls {
 	margin-top: 10px;
 	border: 1px solid transparent;

@@ -1,3 +1,5 @@
+var express = require('express');
+var app = express();
 var passport = require('passport');
 var bodyParser = require('body-parser');
 
@@ -26,6 +28,7 @@ function api_index(req, res) {
 		]
 	})
 }
+
 
 function getSignup(req, res) {
 	res.render('signup.ejs', { message: req.flash('signupMessage') });
@@ -119,10 +122,15 @@ function story_index(req, res) {
 };
 
 function story_create(req, res) {
-	db.Story.create(req.body, function(err, story) {
-		if (err) return "story create error: " + err;
-		res.json(story);
-	});
+	var story = req.body;
+	db.User.findById(req.params.id, function(err, user) {
+		user.local.stories.push(req.body);
+	})
+
+	// db.Story.create(req.body, function(err, story) {
+	// 	if (err) return "story create error: " + err;
+	// 	res.json(story);
+	// });
 
 };
 

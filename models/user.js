@@ -4,7 +4,7 @@ var bcrypt = require('bcrypt-nodejs');
 
 var Story = require('./story.js');
 
-var User = mongoose.Schema ({
+var User = new Schema ({
 	local: {
 		email: String,
 		username: String,

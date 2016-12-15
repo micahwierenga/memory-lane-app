@@ -8,7 +8,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 
-// mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/memory-lane-app');
 
 app.use(morgan('dev'));
 app.use(cookieParser());
@@ -28,20 +27,18 @@ app.use(flash());
 
 require('./config/passport')(passport);
 
+
 app.use(function(req, res, next) {
 	res.locals.currentUser = req.user;
+	currentSessionUser = res.locals.currentUser;
 	next();
 });
+
 
 var routes = require('./config/routes');
 app.use(routes);
 
 app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(bodyParser.json());
-
-// app.get('/', function homepage(req, res) {
-// 	res.sendFile(__dirname + '/views/index.html');
-// });
 
 
 app.listen(process.env.PORT || 3000, function() {

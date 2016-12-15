@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var StorySchema = mongoose.Schema ({
+var StorySchema = new Schema ({
 	street: String,
 	city: String,
 	monthStart: String,
