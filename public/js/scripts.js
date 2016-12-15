@@ -107,7 +107,7 @@ function displayStory(data) {
 
 function initAutocomplete() {
 	var map = new google.maps.Map(document.getElementById('map'), {
-	  center: {lat: 36.2102595, lng: -95.712891},
+	  center: {lat: 39.4653, lng: -95.7364},
 	  zoom: 4,
 	  mapTypeId: 'roadmap'
 	});
