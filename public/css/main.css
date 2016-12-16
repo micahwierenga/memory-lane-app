@@ -1,17 +1,21 @@
 body {
 /*	padding-top: 70px;*/
-	background: #18121E;
+	background: #a8b6bf;
 }
 
 .navbar {
-	background-color: #EAC67A;
+	background-color: #7d4627;
 	border: none;
 	border-radius: 0;
 	font-weight: bold;
 }
 
-.navbar-default {
-	color: #18121E;
+.navbar-default .navbar-brand {
+	color: #edd9c0;
+}
+
+.navbar-default .navbar-nav>li>a {
+	color: #edd9c0;
 }
 
 /*.navbar-brand:hover {
@@ -27,26 +31,33 @@ body {
 }
 
 #storyModal {
-	background: #233237;
+	background: #edd9c0;
 	padding: 15px;
 	border-radius: 4px;
-	color: #EAC67A;
+	color: #7d4627;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
 #displayStory {
-	background: #984b43;
+	background: #7d4627;
 	color: white;
 	padding: 10px;
 	margin-bottom: 20px;
 	border-radius: 4px;
 	width: 100%;
 	display: inline-block;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
 .form-control {
 	border-radius: none;
 	width: inherit;
 	display: inline-block;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.btn {
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
 label {
@@ -106,8 +117,9 @@ label {
 
 #map {
 	width: 600px;
-	height: 500px;
+	height: 400px;
 	border-radius: 4px;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 /* Optional: Makes the sample page fill the window. */
 html, body {
