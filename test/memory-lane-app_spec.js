@@ -3,7 +3,7 @@ var request = require('request');
 
 var URL = 'https://restcountries.eu/rest/v1/name/estonia';
 
-describe('Testing REST Countries', function() {
+describe('Testing Google API', function() {
 	it('should receive a 200 / OK HTTP status code', function(done) {
 		request(URL, function(error, response, body) {
 			expect(response.statusCode).to.eq(200);

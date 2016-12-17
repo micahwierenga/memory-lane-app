@@ -3,6 +3,14 @@ body {
 	background: #a8b6bf;
 }
 
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+/*Navigation*/
+
 .navbar {
 	background-color: #7d4627;
 	border: none;
@@ -18,13 +26,7 @@ body {
 	color: #edd9c0;
 }
 
-/*.navbar-brand:hover {
-	color: black;
-}*/
-
-#mapFrame {
-	margin: 0;
-}
+/*Story Submission Div*/
 
 #storyBody {
 	height: 100px;
@@ -65,6 +67,8 @@ label {
 	margin-left: 14px;
 }
 
+/*Form Fields*/
+
 #street {
 	width: 46%;
 	margin-left: 14px;
@@ -100,6 +104,8 @@ label {
 	height: 20px;
 }
 
+/*Story Glyphs*/
+
 .glyphicon {
 	margin-right: 5px;
 	color: white;
@@ -113,7 +119,11 @@ label {
 	width: 300px;
 }
 
+/*Map Div*/
 
+#mapFrame {
+	margin: 0;
+}
 
 #map {
 	width: 600px;
@@ -122,11 +132,7 @@ label {
 	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 /* Optional: Makes the sample page fill the window. */
-html, body {
-	height: 100%;
-	margin: 0;
-	padding: 0;
-}
+
 
 .controls {
 	margin-top: 10px;
@@ -138,6 +144,8 @@ html, body {
 	outline: none;
 	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
+
+/*Search Box*/
 
 #pac-input {
 	background-color: #fff;
@@ -159,6 +167,8 @@ html, body {
 	font-family: Roboto;
 }
 
+/*Type Selectors*/
+
 #type-selector {
 	color: #fff;
 	background-color: #4d90fe;
@@ -171,6 +181,9 @@ html, body {
 	font-size: 13px;
 	font-weight: 300;
 }
+
+/*Target*/
+
 #target {
 	width: 345px;
 }

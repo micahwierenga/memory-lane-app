@@ -12,9 +12,11 @@ function authenticatedUser(req, res, next) {
 	res.redirect('/');
 }
 
+//Route for home
 router.route('/')
 	.get(staticsController.home);
 
+//Routes for signing up and logging in/out
 router.route('/signup')
 	.get(usersController.getSignup)
 	.post(usersController.postSignup)
@@ -26,12 +28,14 @@ router.route('/login')
 router.route('/logout')
 	.get(usersController.getLogout)
 
-router.route('/secret')
-	.get(authenticatedUser, usersController.secret)
+// router.route('/secret')
+// 	.get(authenticatedUser, usersController.secret)
 
+//Route for showing all endpoints
 router.route('/api')
 	.get(usersController.api_index);
 
+//Routes for indexing, showing, creating, updating, and deleting users
 router.route('/api/user')
 	.get(usersController.user_index)
 	.post(usersController.user_create)
@@ -41,6 +45,7 @@ router.route('/api/user/:id')
 	.put(usersController.user_update)
 	.delete(usersController.user_delete)
 
+//Routes for indexing, showing, creating, updating, and deleting stories
 router.route('/api/story')
 	.get(usersController.story_index)
 	.post(usersController.story_create)
@@ -53,6 +58,7 @@ router.route('/api/story/:id')
 	.delete(usersController.story_delete)
 	// .delete(authenticatedUser, usersController.story_delete)
 
+//Route for retrieving inital map
 router.route('/api/map')
 	.get(usersController.get_map)
 

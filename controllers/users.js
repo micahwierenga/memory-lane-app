@@ -14,22 +14,18 @@ function api_index(req, res) {
 		documentation_url: "",
 		base_url: "",
 		endpoints: [
-		{method: "GET", path: "/api", description: "Describes available endpoints"},
-		{method: "GET", path: "/api/user", description: "Describes available endpoints"},
-		{method: "POST", path: "/api/user", description: "Describes available endpoints"},
-		{method: "GET", path: "/api/user/:id", description: "Describes available endpoints"},
-		{method: "GET", path: "/api/user/:id", description: "Describes available endpoints"},
-		{method: "Delete", path: "/api/user/:id", description: "Describes available endpoints"},
-		{method: "GET", path: "/api/stories", description: "Describes available endpoints"},
-		{method: "POST", path: "/api/stories", description: "Describes available endpoints"},
-		{method: "GET", path: "/api/stories/:id", description: "Describes available endpoints"},
-		{method: "GET", path: "/api/stories/:id", description: "Describes available endpoints"},
-		{method: "Delete", path: "/api/stories/:id", description: "Describes available endpoints"}
+		{method: "GET", path: "/api", description: "You are here"},
+		{method: "GET", path: "/api/user", description: "Lists all guests who have been here while also having done that"},
+		{method: "POST", path: "/api/user", description: "We did not want these new users to be out on the streets, so we directed them here"},
+		{method: "GET", path: "/api/user/:id", description: "If you want to find one user, now you know where to go"},
+		{method: "GET", path: "/api/story", description: "If you're looking for a great story, look no further"},
+		{method: "POST", path: "/api/story", description: "These new stories were homeless until they followed this path"},
+		{method: "GET", path: "/api/story/:id", description: "Some stories like attention and some do not; this path, however, leaves them no choice"}
 		]
 	})
 }
 
-
+//Controllers for signing up and loggin in/out
 function getSignup(req, res) {
 	res.render('signup.ejs', { message: req.flash('signupMessage') });
 };
@@ -63,16 +59,17 @@ function getLogout(req, res) {
 
 function secret(req, res) {
 	res.render('secret.ejs', { secretMessage: "Hey" });
-	// res.send( {secretMessage: "Hey" });
+	res.send( {secretMessage: "Hey" });
 
-	// var secretStrategy = passport.authenticate('local-secret', {
-	// 	successRedirect: '/secret',
-	// 	failureRedirect: '/',
-	// 	failureFlash: true
-	// });
-	// return secretStrategy(req, res);
+	var secretStrategy = passport.authenticate('local-secret', {
+		successRedirect: '/secret',
+		failureRedirect: '/',
+		failureFlash: true
+	});
+	return secretStrategy(req, res);
 };
 
+//Controllers that allow users to be indexed, shown, created, updated, and deleted
 function user_index(req, res) {
 	db.User.find({}, function(err, users) {
 		if (err) return "user index error: " + err;
@@ -114,6 +111,7 @@ function user_delete(req, res) {
 	})
 };
 
+//Controllers that allow stories to be indexed, shown, created, updated, and deleted
 function story_index(req, res) {
 	db.Story.find({}, function(err, story) {
 		if (err) return "story index error: " + err;
@@ -164,6 +162,7 @@ function story_delete(req, res) {
 	})
 };
 
+//Controller that takes the API key variable and builds the url for the initial map
 function get_map(req, res) {
 	res.json('https://maps.googleapis.com/maps/api/js?key=' + apiKeyGoogle + '&libraries=places&callback=initAutocomplete')
 }
