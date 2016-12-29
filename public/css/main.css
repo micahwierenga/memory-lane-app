@@ -231,7 +231,7 @@ footer {
 
 .copyright {
 	text-align: center;
-	position: relative;
+	position: absolute;
 	bottom: 0;
 	left: 0;
 	color: rgba(239, 235, 226, 1);
@@ -243,7 +243,7 @@ footer {
     border: none;
     border-radius: 0;
     height: 150px;
-    z-index: 1;
+    z-index: 3;
     margin-top: 20px;
 }
 
