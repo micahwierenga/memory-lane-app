@@ -41,7 +41,7 @@ Your app must:
 
 * **Include wireframes** that you designed during the planning process
 
->>>>>>>>
+>https://app.moqups.com/mwierenga/pxHfUIKpyi/edit/page/ad64222d5
 
 
 * Have **semantically clean HTML and CSS**
@@ -82,4 +82,4 @@ Your app must:
 * **Wireframes of your app**, hosted somewhere & linked in your readme
 * A link in your ``readme.md`` to the publicly-accessible **user stories you created**
 
->>>>>>>>>>>>>>>
+>https://app.moqups.com/mwierenga/pxHfUIKpyi/edit/page/ad64222d5
